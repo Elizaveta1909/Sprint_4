@@ -1,3 +1,5 @@
+import time
+
 from BaseApp import BasePage
 from locators.test_order_locators import OrderLocators
 from locators.test_questions_locators import QuestionsLocators
@@ -16,17 +18,15 @@ class Main_Page(BasePage):
     def put_off_cookie(self):
         self.driverwait(QuestionsLocators.LOCATOR_COOKIE_BUTTON).click()
 
-    def open(self):
-        self.driver.get(OrderLocators.BASE_URL)
+    def switch_to_another_tab(self):
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        time.sleep(1)
+        new_url = self.driver.current_url
+        return new_url
 
     def open_ya_page_by_logo(self):
         self.driverwait(OrderLocators.LOGO_YANDEX).click()
 
-    def switch_tab(self):
-        self.driver.switch_to.window(self.driver.window_handles[1])
-
-    def get_url(self):
-        return self.driver.current_url
 
 class URL():
     ya_main_page_url = "https://dzen.ru/?yredirect=true"

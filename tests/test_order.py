@@ -1,8 +1,5 @@
 import allure
 
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 from pages.order_page import Main_Page, Form_Order, About_Rent, YandexButton, URL
 from pages.questions_page import Question_Program
 
@@ -78,11 +75,11 @@ class TestOrders:
     @allure.title('Проверка кнопки "Яндекс"')
     @allure.feature('Check button Yandex')
     @allure.story('Проверяем кнопку "Яндекс"')
-    def test_yandex_button(self, browser):  # P.S. не понимаю как исправить, что бы ни делала показывает другой url
+    def test_yandex_button(self, browser):
         test_main_page = Main_Page(browser)
-        test_main_page.open()
         test_main_page.open_ya_page_by_logo()
-        test_main_page.switch_tab()
-        WebDriverWait(browser, 15).until(EC.url_changes("about:blank"))
-        current_url = test_main_page.get_url()
-        assert current_url == URL.ya_main_page_url
+        test_main_page.switch_to_another_tab()
+        url = URL()
+        assert browser.current_url == url.ya_main_page_url
+
+
