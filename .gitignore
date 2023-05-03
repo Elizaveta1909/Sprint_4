@@ -1,0 +1,6 @@
+../Sprint_4/.idea
+__pycache__
+.idea
+../tests/tests/geckodriver.log
+/tests/.pytest_cache/
+/tests/geckodriver.log
