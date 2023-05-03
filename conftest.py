@@ -9,8 +9,7 @@ def browser():
     options.add_argument("--window-size=1200,800")
 
     driver = webdriver.Firefox(executable_path="./geckodriver")  # Задаем браузер
-    # driver.maximize_window()  # Делаем полный экран
 
     yield driver  # Возвращаем генератор
 
-    driver.quit()  # Выходим с браузера :)
+    driver.quit()  # Выходим из браузера :)
